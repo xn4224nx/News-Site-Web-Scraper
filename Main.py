@@ -86,7 +86,7 @@ all_access_data_dict = {
  
 if __name__ == '__main__':
     
-    current_site_dict = all_access_data_dict["Vogue_UK"] 
+    current_site_dict = all_access_data_dict["The_Economist"] 
     
     # Setup the class instance
     s = news_web_scraper(data_storage_path = current_site_dict["storage path"],
@@ -99,18 +99,20 @@ if __name__ == '__main__':
     s.site_map_traversal(current_site_dict["site map addr"])
     
     # Extract one page
-    # s.struc_html_data_extract("https://www.economist.com/europe/2021/06/24/french-voters-punish-presidential-poll-favourites")
+    #s.struc_html_data_extract("https://www.economist.com/europe/2021/06/24/french-voters-punish-presidential-poll-favourites")
     
     # While there are links that haven't been looked at, keep downloading
     while(len(s.urls_to_visit_dict) > 0):
         s.site_traversal(3000)
         s.new_output_JSON_for_Articles()
     
-
+    
+    
+    
     
 ### TODO:
     
-    # Rewrite the code to use external dependancies 
+    # Create a GUI interface in tkinter
     
     # Rewrite the functions to be more flexible and work outside the economist site:
 

@@ -132,3 +132,14 @@ if __name__ == '__main__':
     
     # only save file when a new article is found so if the connection gets interupted
     
+    # Remove URLs that divert ourside the base url:
+            # I.E but in a base url check for every URL
+            
+    # Change the program logic to end or pause if the internet is disconnected and try again
+    # in a number of minutes/quit
+    
+    # Put the site access dict into another file (maybe a JSON or other type)
+    
+    # Adjust the displayed access time to be an average of the last 100 accesses
+    # and thus use that for the finish datetime.
+    

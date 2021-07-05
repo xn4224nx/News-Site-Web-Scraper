@@ -308,7 +308,12 @@ class news_web_scraper:
             elif(res_access_dict["keep"] == "time"):
                 for block in arr_of_html_blocks:
                     if block.has_attr("datetime"):
-                        temp.append(block['datetime'])
+                        temp = block['datetime']
+                        break
+            
+            # Save part of the URL
+            elif(res_access_dict["keep"] == "URL"):
+                temp = aux.extract_string(page_url, res_access_dict["attr"]["pre"], res_access_dict["attr"]["post"])
             
             # Catch the which not being a valid type
             else:

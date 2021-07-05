@@ -21,10 +21,10 @@ if __name__ == '__main__':
                     DEBUG = True)
     
     # Get all article urls from the sitemap
-    #s.site_map_traversal(current_site_dict["site map addr"])
+    # s.site_map_traversal(current_site_dict["site map addr"])
     
     # Extract one page
-    s.struc_html_data_extract("https://www.rollingstone.com/music/music-features/5th-dimension-summer-of-soul-1190823/")
+    s.struc_html_data_extract("https://www.rollingstone.com/culture/culture-news/shacarri-richardson-olympics-test-positive-marijuana-1192479/")
     
     # While there are links that haven't been looked at, keep downloading
     # while(len(s.urls_to_visit_dict) > 0):
@@ -46,7 +46,7 @@ if __name__ == '__main__':
         # www.spectator.co.uk               -- DONE
         # www.vogue.co.uk                   -- DONE
         # www.nationalgeographic.co.uk      -- DONE
-        # www.rollingstone.com
+        # www.rollingstone.com              -- DONE
         # www.newstatesman.com
         # www.theweek.co.uk
         # www.theatlantic.com

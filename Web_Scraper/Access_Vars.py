@@ -105,8 +105,8 @@ site_res_access_dict = {
         "res loc dict": {
             "Title": {"tag":["h1"], "attr":{"class":"article-header__row"}, "keep":"all"},
             "Subtitle": {"tag":["h2"], "attr":{"class":"article-header__row"}, "keep":"all"},
-            "Section": {"tag":["div"], "attr":{"class": "css-gdhqwr"}, "keep":"all"},
-            "Author": {"tag":["h4"], "attr":{"class": "c-author__heading t-bold"}, "keep":0},
+            "Section": {"tag":["div"], "attr":{"pre": "https://www.rollingstone.com/", "post":"/"}, "keep":"URL"},
+            "Author": {"tag":["div"], "attr":{"class": "c-byline__author"}, "keep":0},
             "Description": {"tag":["div"], "attr":{"class":"ngart-img__cont__copy"}, "keep":0},
             "Location": {"tag":["p"], "attr":{"class":"article__dateline-location"}, "keep":"all"},
             "Date": {"tag":["time"], "attr":{"class":"time"}, "keep":"time"},

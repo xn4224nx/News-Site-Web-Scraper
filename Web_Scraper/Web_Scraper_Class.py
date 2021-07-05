@@ -9,7 +9,7 @@ import requests, re, os, json, random, time
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin, urlparse
 from datetime import datetime, timedelta
-from Web_Scraper.Scrap_Aux_Functions import *
+import Web_Scraper.Scrap_Aux_Functions as aux
 
 
 class news_web_scraper:
@@ -129,7 +129,7 @@ class news_web_scraper:
             
             
             # check you are connected to the internet
-            if(not is_connected_to_internet()): break
+            if(not aux.is_connected_to_internet()): break
             
             # Skip a url if its been seen before
             if(page_to_check in self.all_visited_urls_dict):
@@ -443,7 +443,7 @@ class news_web_scraper:
                 raise ValueError
             
             # Put the saved info into the return dict
-            return_dict[res_name] = remove_non_ascii(temp)
+            return_dict[res_name] = aux.remove_non_ascii(temp)
         
         if self.DEBUG:                    
             for res_name, res_results in return_dict.items():

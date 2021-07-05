@@ -11,7 +11,7 @@ import Web_Scraper.Access_Vars as var
  
 if __name__ == '__main__':
     
-    current_site_dict = var.site_res_access_dict["National_Geographic"] 
+    current_site_dict = var.site_res_access_dict["Rolling_Stone"] 
     
     # Setup the class instance
     s = webscraper.news_web_scraper(data_storage_path = current_site_dict["storage path"],
@@ -24,7 +24,7 @@ if __name__ == '__main__':
     #s.site_map_traversal(current_site_dict["site map addr"])
     
     # Extract one page
-    s.struc_html_data_extract("https://www.nationalgeographic.co.uk/animals/2021/07/sea-anemones-sometimes-eat-ants-but-why-and-how")
+    s.struc_html_data_extract("https://www.rollingstone.com/music/music-features/5th-dimension-summer-of-soul-1190823/")
     
     # While there are links that haven't been looked at, keep downloading
     # while(len(s.urls_to_visit_dict) > 0):
@@ -45,7 +45,7 @@ if __name__ == '__main__':
         # www.wired.co.uk                   -- DONE
         # www.spectator.co.uk               -- DONE
         # www.vogue.co.uk                   -- DONE
-        # www.nationalgeographic.co.uk
+        # www.nationalgeographic.co.uk      -- DONE
         # www.rollingstone.com
         # www.newstatesman.com
         # www.theweek.co.uk

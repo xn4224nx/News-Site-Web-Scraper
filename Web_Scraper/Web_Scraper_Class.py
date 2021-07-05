@@ -177,22 +177,9 @@ class news_web_scraper:
             for url in self.all_visited_urls_dict:
                 if url in self.urls_to_visit_dict:
                     self.urls_to_visit_dict.pop(url)
-
-            # Save the found articles
-            with open(self.main_JSON_path, 'w+') as f:
-                json.dump(self.old_web_data, f, indent=4)
             
-            # Save the visitied URLs
-            with open(self.all_visited_urls_path, 'w+') as f:
-                json.dump(self.all_visited_urls_dict, f, indent=4)
-            
-            # Save the saved URLs
-            with open(self.all_saved_urls_path, 'w+') as f:
-                json.dump(self.all_saved_urls_dict, f, indent=4)
-            
-            # Save the URLs to visit
-            with open(self.urls_to_visit_path, 'w+') as f:
-                json.dump(self.urls_to_visit_dict, f, indent=4)
+            # Save all the JSONS
+            self.save_all_JSONs()
                 
             # Set the new page_to_check
             if list(self.urls_to_visit_dict.keys()):
@@ -367,10 +354,6 @@ class news_web_scraper:
             # Add the found html files to `urls_to_visit_dict`
             self.urls_to_visit_dict.update(all_found_htmls_dict)
             
-            # Save the visitied URLs
-            with open(self.urls_to_visit_path, 'w+') as f:
-                json.dump(self.urls_to_visit_dict, f, indent=4)
-            
             # Mark the previously scraped xml link as checked
             all_found_xmls_dict[cur_xml_page] = True
             
@@ -395,6 +378,9 @@ class news_web_scraper:
         print("\n\nIn the site: "+ site_map_xml)
         print("\t" + str(len(all_found_xmls_dict)-1) +" XML files have been found in total and")
         print("\t" + str(len(all_found_htmls_dict)) +" HTML files have been found in total", end = "\n\n")
+        
+        # Save all the JSONS
+        self.save_all_JSONs()
         
 
     
@@ -489,3 +475,22 @@ class news_web_scraper:
         
         # Clear old webdata
         self.old_web_data = {}         
+    
+    def save_all_JSONs(self):
+        
+        # Save the found articles
+        with open(self.main_JSON_path, 'w+') as f:
+            json.dump(self.old_web_data, f, indent=4)
+        
+        # Save the visitied URLs
+        with open(self.all_visited_urls_path, 'w+') as f:
+            json.dump(self.all_visited_urls_dict, f, indent=4)
+        
+        # Save the saved URLs
+        with open(self.all_saved_urls_path, 'w+') as f:
+            json.dump(self.all_saved_urls_dict, f, indent=4)
+        
+        # Save the URLs to visit
+        with open(self.urls_to_visit_path, 'w+') as f:
+            json.dump(self.urls_to_visit_dict, f, indent=4)        
+    

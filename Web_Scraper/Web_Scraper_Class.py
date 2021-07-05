@@ -110,7 +110,9 @@ class news_web_scraper:
         else:
             with open(self.urls_to_visit_path, 'r') as json_file:
                 self.urls_to_visit_dict = json.load(json_file)
- 
+
+
+
 
     def site_traversal(self, scan_limit=3):
         self.scan_limit = scan_limit
@@ -210,124 +212,8 @@ class news_web_scraper:
             if (t_0 - t_1 < self.request_delay):
                 time.sleep(self.request_delay - (t_0 - t_1))
  
-                 
-       
-
-    def new_output_JSON_for_Articles(self):
-        
-        # Make sure the old web data is saved to the old filepath
-        with open(self.main_JSON_path, 'w+') as f:
-            json.dump(self.old_web_data, f, indent=4)
-        
-        # Create a new JSON File
-        file_name = self.site_name + datetime.now().strftime("_%Y_%m_%d-%H%M%S") + ".JSON"
-        path = os.path.join(self.data_storage_path, file_name)
-        
-        if self.DEBUG:
-            print("New path is: " + path)
-        
-        with open(path, "w") as f:
-            f.write("{}")
-        
-        # Set the path to the main JSON storage file
-        self.main_JSON_path = os.path.join(self.data_storage_path, file_name)
-        
-        # Clear old webdata
-        self.old_web_data = {}
-        
 
 
-    def site_map_traversal(self, site_map_xml):
-        
-        # Extract all html from the site map xml and the sub xmls and add all
-        # the found htmls to `self.urls_to_visit_dict`
-        
-        # Key Variables
-        all_found_xmls_dict = {site_map_xml : None}
-        all_found_htmls_dict = {}
-        cur_xml_page = site_map_xml
-        
-        # Get all the xml & html in sub xml pages
-        while(None in all_found_xmls_dict.values()):
-            
-            # Record the time that the particular loop iteration starts
-            t_0 =  time.time()
-            
-            # Extract all html & xml from the cur_xml_page
-            found_xmls_dict, found_htmls_dict = self.site_map_extract(cur_xml_page)
-            
-            # Add the found links to the relevant dicts
-            all_found_xmls_dict.update(found_xmls_dict)
-            all_found_htmls_dict.update(found_htmls_dict)
-            
-            # Add the found html files to `urls_to_visit_dict`
-            self.urls_to_visit_dict.update(all_found_htmls_dict)
-            
-            # Save the visitied URLs
-            with open(self.urls_to_visit_path, 'w+') as f:
-                json.dump(self.urls_to_visit_dict, f, indent=4)
-            
-            # Mark the previously scraped xml link as checked
-            all_found_xmls_dict[cur_xml_page] = True
-            
-            # Find a new xml link to check next
-            possible_xml_to_check_next = [k for k,v in all_found_xmls_dict.items() if v == None]
-            
-            # Break if none are found
-            if possible_xml_to_check_next:
-                cur_xml_page = random.choice(possible_xml_to_check_next)
-            else:
-                break 
-            
-            # Record the time that the particular loop iteration ends
-            t_1 =  time.time()
-            
-            # If less seconds have passed than the request delay make sure the
-            # full delay is completed
-            if (t_1 - t_0 < self.request_delay):
-                time.sleep(self.request_delay - (t_1 - t_0))
- 
-        # Print infomation about what has been found
-        print("\n\nIn the site: "+ site_map_xml)
-        print("\t" + str(len(all_found_xmls_dict)-1) +" XML files have been found in total and")
-        print("\t" + str(len(all_found_htmls_dict)) +" HTML files have been found in total", end = "\n\n")
-        
-  
-    def site_map_extract(self, xml_address):
-        
-        found_xmls_dict = {}
-        found_htmls_dict = {}
-    
-        # get the xml map
-        xml_map = requests.get(xml_address, headers = self.scrape_header)
-        soup = BeautifulSoup(xml_map.text,'lxml')
-        
-        # Get all the xml and html links on the sitemap xml page
-        sitemapTags = soup.find_all("loc")
-        
-        for sitemap in sitemapTags:
-            
-            # Extract the addresses
-            address = sitemap.text
-            
-            # Get the XML link
-            if ".xml" in address:
-                found_xmls_dict[address] = None 
-                if self.DEBUG:
-                    print(address)
-
-            # Get the HTML link
-            else:
-                found_htmls_dict[address] = None
-                if self.DEBUG:
-                    print(address)    
-                    
-        if self.DEBUG:
-            print("\n\nOn the page: " + xml_address)   
-            print("\t" + str(len(found_xmls_dict)) +" XML pages found")
-            print("\t" + str(len(found_htmls_dict)) +" HTML pages found\n\n")
-        
-        return found_xmls_dict, found_htmls_dict
 
     def struc_html_data_extract(self, page_url):
         """
@@ -451,7 +337,103 @@ class news_web_scraper:
                 print(res_name, end = "\n\n")
                 print(res_results, end = "\n\n\n")
         
-        return return_dict, return_urls          
+        return return_dict, return_urls                 
+       
+
+
+    def site_map_traversal(self, site_map_xml):
+        
+        # Extract all html from the site map xml and the sub xmls and add all
+        # the found htmls to `self.urls_to_visit_dict`
+        
+        # Key Variables
+        all_found_xmls_dict = {site_map_xml : None}
+        all_found_htmls_dict = {}
+        cur_xml_page = site_map_xml
+        
+        # Get all the xml & html in sub xml pages
+        while(None in all_found_xmls_dict.values()):
+            
+            # Record the time that the particular loop iteration starts
+            t_0 =  time.time()
+            
+            # Extract all html & xml from the cur_xml_page
+            found_xmls_dict, found_htmls_dict = self.site_map_extract(cur_xml_page)
+            
+            # Add the found links to the relevant dicts
+            all_found_xmls_dict.update(found_xmls_dict)
+            all_found_htmls_dict.update(found_htmls_dict)
+            
+            # Add the found html files to `urls_to_visit_dict`
+            self.urls_to_visit_dict.update(all_found_htmls_dict)
+            
+            # Save the visitied URLs
+            with open(self.urls_to_visit_path, 'w+') as f:
+                json.dump(self.urls_to_visit_dict, f, indent=4)
+            
+            # Mark the previously scraped xml link as checked
+            all_found_xmls_dict[cur_xml_page] = True
+            
+            # Find a new xml link to check next
+            possible_xml_to_check_next = [k for k,v in all_found_xmls_dict.items() if v == None]
+            
+            # Break if none are found
+            if possible_xml_to_check_next:
+                cur_xml_page = random.choice(possible_xml_to_check_next)
+            else:
+                break 
+            
+            # Record the time that the particular loop iteration ends
+            t_1 =  time.time()
+            
+            # If less seconds have passed than the request delay make sure the
+            # full delay is completed
+            if (t_1 - t_0 < self.request_delay):
+                time.sleep(self.request_delay - (t_1 - t_0))
+ 
+        # Print infomation about what has been found
+        print("\n\nIn the site: "+ site_map_xml)
+        print("\t" + str(len(all_found_xmls_dict)-1) +" XML files have been found in total and")
+        print("\t" + str(len(all_found_htmls_dict)) +" HTML files have been found in total", end = "\n\n")
+        
+
+    
+    def site_map_extract(self, xml_address):
+        
+        found_xmls_dict = {}
+        found_htmls_dict = {}
+    
+        # get the xml map
+        xml_map = requests.get(xml_address, headers = self.scrape_header)
+        soup = BeautifulSoup(xml_map.text,'lxml')
+        
+        # Get all the xml and html links on the sitemap xml page
+        sitemapTags = soup.find_all("loc")
+        
+        for sitemap in sitemapTags:
+            
+            # Extract the addresses
+            address = sitemap.text
+            
+            # Get the XML link
+            if ".xml" in address:
+                found_xmls_dict[address] = None 
+                if self.DEBUG:
+                    print(address)
+
+            # Get the HTML link
+            else:
+                found_htmls_dict[address] = None
+                if self.DEBUG:
+                    print(address)    
+                    
+        if self.DEBUG:
+            print("\n\nOn the page: " + xml_address)   
+            print("\t" + str(len(found_xmls_dict)) +" XML pages found")
+            print("\t" + str(len(found_htmls_dict)) +" HTML pages found\n\n")
+        
+        return found_xmls_dict, found_htmls_dict
+
 
     
     def print_trawler_progress(self):
@@ -485,4 +467,25 @@ class news_web_scraper:
         print(visited_pages + crawler_stats + time_stats +"+"*30, end = "\n\n")
 
 
-         
+
+    def new_output_JSON_for_Articles(self):
+        
+        # Make sure the old web data is saved to the old filepath
+        with open(self.main_JSON_path, 'w+') as f:
+            json.dump(self.old_web_data, f, indent=4)
+        
+        # Create a new JSON File
+        file_name = self.site_name + datetime.now().strftime("_%Y_%m_%d-%H%M%S") + ".JSON"
+        path = os.path.join(self.data_storage_path, file_name)
+        
+        if self.DEBUG:
+            print("New path is: " + path)
+        
+        with open(path, "w") as f:
+            f.write("{}")
+        
+        # Set the path to the main JSON storage file
+        self.main_JSON_path = os.path.join(self.data_storage_path, file_name)
+        
+        # Clear old webdata
+        self.old_web_data = {}         

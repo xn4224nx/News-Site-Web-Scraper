@@ -11,20 +11,20 @@ import Web_Scraper.Access_Vars as var
  
 if __name__ == '__main__':
     
-    current_site_dict = var.site_res_access_dict["The_Economist"] 
+    current_site_dict = var.site_res_access_dict["National_Geographic"] 
     
     # Setup the class instance
     s = webscraper.news_web_scraper(data_storage_path = current_site_dict["storage path"],
                     start_page = current_site_dict["start page"],
                     site_name = current_site_dict["site name"],
                     resource_locator_dict = current_site_dict["res loc dict"],
-                    DEBUG = False)
+                    DEBUG = True)
     
     # Get all article urls from the sitemap
     #s.site_map_traversal(current_site_dict["site map addr"])
     
     # Extract one page
-    #s.struc_html_data_extract("https://www.economist.com/europe/2021/06/24/french-voters-punish-presidential-poll-favourites")
+    s.struc_html_data_extract("https://www.nationalgeographic.co.uk/animals/2021/07/sea-anemones-sometimes-eat-ants-but-why-and-how")
     
     # While there are links that haven't been looked at, keep downloading
     # while(len(s.urls_to_visit_dict) > 0):
@@ -57,9 +57,6 @@ if __name__ == '__main__':
     
     # only save file when a new article is found so if the connection gets interupted
     
-    # Remove URLs that divert ourside the base url:
-            # I.E but in a base url check for every URL
-            
     # Change the program logic to end or pause if the internet is disconnected and try again
     # in a number of minutes/quit
     

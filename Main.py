@@ -96,15 +96,15 @@ if __name__ == '__main__':
                     DEBUG = False)
     
     # Get all article urls from the sitemap
-    s.site_map_traversal(current_site_dict["site map addr"])
+    #s.site_map_traversal(current_site_dict["site map addr"])
     
     # Extract one page
     #s.struc_html_data_extract("https://www.economist.com/europe/2021/06/24/french-voters-punish-presidential-poll-favourites")
     
     # While there are links that haven't been looked at, keep downloading
-    while(len(s.urls_to_visit_dict) > 0):
-        s.site_traversal(3000)
-        s.new_output_JSON_for_Articles()
+    # while(len(s.urls_to_visit_dict) > 0):
+    #     s.site_traversal(3000)
+    #     s.new_output_JSON_for_Articles()
     
     
     

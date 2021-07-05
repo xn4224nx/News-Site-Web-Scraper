@@ -362,14 +362,20 @@ class news_web_scraper:
         for ahref_block in soup.find_all('a'):
             
             link = ahref_block.get('href')
+            link_base_url = '{uri.scheme}://{uri.netloc}/'.format(uri=urlparse(link))
             
             # Don't process links that are empty or external
             if link is None:
                 continue
             
+
             # Detect incomplete urls and try and make them usable
             if not link.startswith('http'):
                 link = urljoin(self.base_url, link)
+                
+            # Remove external links     
+            if link_base_url not in self.base_url:
+                 continue
 
             # Remove anchor data from any url
             if '#' in link:

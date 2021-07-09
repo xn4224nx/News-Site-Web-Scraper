@@ -114,5 +114,22 @@ site_res_access_dict = {
             }
         
         }, 
-   
+    
+    "New_Statesman":{
+        "site name": "New_Statesman",
+        "start page": "https://www.newstatesman.com/",
+        "storage path": "D:/Data/Web Scraper/New_Statesman",
+        "site map addr": "https://www.nationalgeographic.co.uk/sitemap/sitemap.xml",
+        "res loc dict": {
+            "Title": {"tag":["h1"], "attr":{"class":"title"}, "keep":"all"},
+            "Subtitle": {"tag":["div"], "attr":{"class":"field-item even"}, "keep":0},
+            "Section": {"tag":["div"], "attr":{"class": "article-category"}, "keep":"all"},
+            "Author": {"tag":["div"], "attr":{"class": "author-byline"}, "keep":"all"},
+            "Description": {"tag":["div"], "attr":{"class":"ngart-img__cont__copy"}, "keep":0},
+            "Location": {"tag":["p"], "attr":{"class":"article__dateline-location"}, "keep":"all"},
+            "Date": {"tag":["div"], "attr":{"class":"article-date"}, "keep":"all"},
+            "Article": {"tag":["div"], "attr":{"class":"field-item even", "property":"content:encoded"}, "keep":"all"}
+            }
+        
+        },    
     }

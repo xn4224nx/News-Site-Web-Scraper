@@ -151,4 +151,22 @@ site_res_access_dict = {
         
         }, 
 
+    "The_Atlantic":{
+        "site name": "The_Atlantic",
+        "start page": "https://www.theatlantic.com/",
+        "storage path": "D:/Data/Web Scraper/The_Atlantic",
+        "site map addr": "https://www.theatlantic.com/sitemaps/sitemap.xml",
+        "res loc dict": {
+            "Title": {"tag":["h1"], "attr":{"class":"ArticleTitle"}, "keep":"all"},
+            "Subtitle": {"tag":["p"], "attr":{"class":"ArticleDek_root__1_tnX"}, "keep":0},
+            "Section": {"tag":["div"], "attr":{"pre": "https://www.theatlantic.com/", "post":"/"}, "keep":"URL"},
+            "Author": {"tag":["address"], "attr":{"id": "byline"}, "keep":"all"},
+            "Description": {"tag":["div"], "attr":{"class":"ngart-img__cont__copy"}, "keep":0},
+            "Location": {"tag":["p"], "attr":{"class":"article__dateline-location"}, "keep":"all"},
+            "Date": {"tag":["time"],  "keep":"time"},
+            "Article": {"tag":["p"], "attr":{"class":"ArticleParagraph"}, "keep":"all"}
+            }
+        
+        }, 
+
     }

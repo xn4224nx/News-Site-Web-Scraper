@@ -380,12 +380,12 @@ class news_web_scraper:
                 break 
             
             # Record the time that the particular loop iteration ends
-            t_1 =  time.time()
+            loop_time_length = time.time() - t_0
             
             # If less seconds have passed than the request delay make sure the
-            # full delay is completed
-            if (t_1 - t_0 < self.request_delay):
-                time.sleep(self.request_delay - (t_1 - t_0))
+            # full delay is completed.
+            if (loop_time_length < self.request_delay):
+                time.sleep(self.request_delay - (loop_time_length))
  
         # Print infomation about what has been found
         print("\n\nIn the site: "+ site_map_xml)

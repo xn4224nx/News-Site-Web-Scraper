@@ -11,7 +11,7 @@ import Web_Scraper.Access_Vars as var
  
 if __name__ == '__main__':
     
-    current_site_dict = var.site_res_access_dict["The_Week"] 
+    current_site_dict = var.site_res_access_dict["The_Atlantic"] 
     
     # Setup the class instance
     s = webscraper.news_web_scraper(data_storage_path = current_site_dict["storage path"],
@@ -21,10 +21,10 @@ if __name__ == '__main__':
                     DEBUG = True)
     
     # Get all article urls from the sitemap
-    # s.site_map_traversal(current_site_dict["site map addr"])
+    s.site_map_traversal(current_site_dict["site map addr"])
     
     # Extract one page
-    #s.struc_html_data_extract("https://www.theweek.co.uk/arts-life/culture/history/953449/a-cold-war-tragedy-the-execution-of-the-rosenbergs")
+    # s.struc_html_data_extract("https://www.theatlantic.com/science/archive/2021/07/space-billionaires-jeff-bezos-richard-branson/619383/")
     
     # While there are links that haven't been looked at, keep downloading
     # while(len(s.urls_to_visit_dict) > 0 or (s.last_visited_page == None)):
@@ -48,8 +48,8 @@ if __name__ == '__main__':
         # www.nationalgeographic.co.uk      -- DONE
         # www.rollingstone.com              -- DONE
         # www.newstatesman.com              -- DONE
-        # www.theweek.co.uk
-        # www.theatlantic.com
+        # www.theweek.co.uk                 -- DONE
+        # www.theatlantic.com               -- DONE
 
     # For each site:
         # Make a locator dict

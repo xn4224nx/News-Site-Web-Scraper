@@ -5,7 +5,7 @@ Created on Sun Jun 27 14:21:48 2021
 @author: FAKENAME
 """
 
-import requests, re, os, json, random, time
+import requests, re, os, json, random, time, collections
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin, urlparse
 from datetime import datetime, timedelta
@@ -24,6 +24,9 @@ class news_web_scraper:
         self.last_visited_page = None
         self.last_visited_article = None
         self.time_started = None
+        
+        self.access_time_deque = collections.deque([])
+        self.access_time_deque_limit = 1000
         
         # Site text JSON Storage Info
         self.data_storage_path = os.path.abspath(data_storage_path)
@@ -123,12 +126,7 @@ class news_web_scraper:
         page_to_check = self.start_page
         new_pages_found = 0
         
-        # Start timing from this point to calculate average time to download a page
-        if(self.time_started == None):
-            self.time_started = datetime.now()
-        
         while(new_pages_found < scan_limit):
-            
             
             # check you are connected to the internet
             if(not aux.is_connected_to_internet()): break
@@ -190,14 +188,25 @@ class news_web_scraper:
                 break
             
             # Record the time that the particular loop iteration ends
-            t_1 =  time.time()
+            loop_time_length = time.time() - t_0
             
+            # Append the time a loop takes to the deque
+            if(loop_time_length > self.request_delay):             
+                self.access_time_deque.append(loop_time_length)
+                
+            else:
+                self.access_time_deque.append(self.request_delay)
+            
+            # if there are more than the limit remove old times
+            if (len(self.access_time_deque) > self.access_time_deque_limit):
+                self.access_time_deque.popleft()
+
             self.print_trawler_progress()
             
             # If less seconds have passed than the request delay make sure the
             # full delay is completed.
-            if (t_0 - t_1 < self.request_delay):
-                time.sleep(self.request_delay - (t_0 - t_1))
+            if (loop_time_length < self.request_delay):
+                time.sleep(self.request_delay - (loop_time_length))
  
 
 
@@ -433,8 +442,8 @@ class news_web_scraper:
         """
         
         # Completion time based on the average time to process a page
-        time_to_process_all_pages = datetime.now() - self.time_started
-        avg_time_process_page = time_to_process_all_pages.total_seconds() / len(self.all_visited_urls_dict)
+        
+        avg_time_process_page = sum(list(self.access_time_deque)) / len(self.access_time_deque)
         completed_datetime = datetime.now() + timedelta(seconds=avg_time_process_page * len(self.urls_to_visit_dict))
         
         visited_pages = "Site: {:20s}\n\tLast Visited Page:    {:20s}\n\tLast Visited Article: {:20s}\n\n".format(

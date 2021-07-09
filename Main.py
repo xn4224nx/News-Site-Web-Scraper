@@ -24,7 +24,7 @@ if __name__ == '__main__':
     # s.site_map_traversal(current_site_dict["site map addr"])
     
     # Extract one page
-    s.struc_html_data_extract("https://www.rollingstone.com/culture/culture-news/shacarri-richardson-olympics-test-positive-marijuana-1192479/")
+    s.struc_html_data_extract("https://www.nationalgeographic.co.uk/travel/2019/11/milans-neo-trattorias")
     
     # While there are links that haven't been looked at, keep downloading
     # while(len(s.urls_to_visit_dict) > 0):
@@ -59,8 +59,6 @@ if __name__ == '__main__':
     
     # Change the program logic to end or pause if the internet is disconnected and try again
     # in a number of minutes/quit
-    
-    # Put the site access dict into another file (maybe a JSON or other type)
     
     # Adjust the displayed access time to be an average of the last 100 accesses
     # and thus use that for the finish datetime.

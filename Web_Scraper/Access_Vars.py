@@ -131,5 +131,24 @@ site_res_access_dict = {
             "Article": {"tag":["div"], "attr":{"class":"field-item even", "property":"content:encoded"}, "keep":"all"}
             }
         
-        },    
+        },   
+    
+    "The_Week":{
+        "site name": "The_Week",
+        "start page": "https://www.theweek.co.uk/",
+        "storage path": "D:/Data/Web Scraper/The_Week",
+        "site map addr": "https://www.theweek.co.uk/sitemap.xml",
+        "res loc dict": {
+            "Title": {"tag":["h1"], "attr":{"class":"content-title"}, "keep":"all"},
+            "Subtitle": {"tag":["h2"], "attr":{"class":"content-subtitle"}, "keep":0},
+            "Section": {"tag":["div"], "attr":{"pre": "https://www.theweek.co.uk/", "post":"/"}, "keep":"URL"},
+            "Author": {"tag":["div"], "attr":{"class": "author-byline"}, "keep":"all"},
+            "Description": {"tag":["div"], "attr":{"class":"ngart-img__cont__copy"}, "keep":0},
+            "Location": {"tag":["p"], "attr":{"class":"article__dateline-location"}, "keep":"all"},
+            "Date": {"tag":["span"], "attr":{"class":"polaris__date"}, "keep":"all"},
+            "Article": {"tag":["div"], "attr":{"class":"polaris__simple-grid--main"}, "keep":"all"}
+            }
+        
+        }, 
+
     }

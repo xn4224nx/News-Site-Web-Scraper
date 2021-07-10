@@ -101,7 +101,7 @@ site_res_access_dict = {
         "site name": "Rolling_Stone",
         "start page": "https://www.rollingstone.com/",
         "storage path": "C:/Data/Web Scraper/Rolling_Stone",
-        "site map addr": "https://www.nationalgeographic.co.uk/sitemap/sitemap.xml",
+        "site map addr": "https://www.rollingstone.com/sitemap_index.xml",
         "res loc dict": {
             "Title": {"tag":["h1"], "attr":{"class":"article-header__row"}, "keep":"all"},
             "Subtitle": {"tag":["h2"], "attr":{"class":"article-header__row"}, "keep":"all"},
@@ -119,7 +119,7 @@ site_res_access_dict = {
         "site name": "New_Statesman",
         "start page": "https://www.newstatesman.com/",
         "storage path": "C:/Data/Web Scraper/New_Statesman",
-        "site map addr": "https://www.nationalgeographic.co.uk/sitemap/sitemap.xml",
+        "site map addr": "",
         "res loc dict": {
             "Title": {"tag":["h1"], "attr":{"class":"title"}, "keep":"all"},
             "Subtitle": {"tag":["div"], "attr":{"class":"field-item even"}, "keep":0},

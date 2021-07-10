@@ -11,17 +11,17 @@ import Web_Scraper.Access_Vars as var
  
 if __name__ == '__main__':
     
-    current_site_dict = var.site_res_access_dict["The_Atlantic"] 
+    current_site_dict = var.site_res_access_dict["Rolling_Stone"] 
     
     # Setup the class instance
     s = webscraper.news_web_scraper(data_storage_path = current_site_dict["storage path"],
                     start_page = current_site_dict["start page"],
                     site_name = current_site_dict["site name"],
                     resource_locator_dict = current_site_dict["res loc dict"],
-                    DEBUG = True)
+                    DEBUG = False)
     
     # Get all article urls from the sitemap
-    # s.site_map_traversal(current_site_dict["site map addr"])
+    s.site_map_traversal(current_site_dict["site map addr"])
     
     # Extract one page
     # s.struc_html_data_extract("https://www.theatlantic.com/science/archive/2021/07/space-billionaires-jeff-bezos-richard-branson/619383/")

@@ -10,7 +10,7 @@ site_res_access_dict = {
     "The_Economist":{
         "site name": "The_Economist",
         "start page": "https://www.economist.com/",
-        "storage path": "D:/Data/Web Scraper/The_Economist",
+        "storage path": "C:/Data/Web Scraper/The_Economist",
         "site map addr": "https://www.economist.com/sitemap.xml",
         "res loc dict": {
             "Title": {"tag":["span"], "attr":{"data-test-id":"Article Headline", "itemprop":"headline", "class":"article__headline"}, "keep":"all"},
@@ -27,7 +27,7 @@ site_res_access_dict = {
     "The_Spectator":{
         "site name": "The_Spectator",
         "start page": "https://www.spectator.co.uk/",
-        "storage path": "D:/Data/Web Scraper/The_Spectator",
+        "storage path": "C:/Data/Web Scraper/The_Spectator",
         "site map addr": "https://www.spectator.co.uk/sitemap.xml",
         "res loc dict": {
             "Title": {"tag":["h1"], "attr":{ "class":"ContentPageTitle-module__headline"}, "keep":"all"},
@@ -42,28 +42,28 @@ site_res_access_dict = {
         
         },    
     
-    "Wired":{
-        "site name": "Wired",
-        "start page": "https://www.wired.co.uk/",
-        "storage path": "D:/Data/Web Scraper/Wired",
-        "site map addr": "https://www.wired.co.uk/sitemap.xml",
-        "res loc dict": {
-            "Title": {"tag":["h1"], "attr":{"class":"content-header__row content-header__hed", "data-testid":"ContentHeaderHed"}, "keep":"all"},
-            "Subtitle": {"tag":["span"], "attr":{"data-test-id":"Article Subheadline", "class":"article__subheadline"}, "keep":"all"},
-            "Section": {"tag":["div"], "attr":{"class": "content-header__rubric rubric-vertical-align"}, "keep":"all"},
-            "Author": {"tag":["a"], "attr":{"class": "byline__name",}, "keep":0},
-            "Description": {"tag":["div"], "attr":{"class":"content-header__row content-header__dek"}, "keep":"all"},
-            "Location": {"tag":["p"], "attr":{"class":"article__dateline-location"}, "keep":"all"},
-            "Date": {"tag":["time"], "attr":{"class":"content-header__publish-date"}, "keep":"all"},
-            "Article": {"tag":["div"], "attr":{"class":"article__body"}, "keep":"all"}
-            }
+    # "Wired":{
+    #     "site name": "Wired",
+    #     "start page": "https://www.wired.co.uk/",
+    #     "storage path": "C:/Data/Web Scraper/Wired",
+    #     "site map addr": "https://www.wired.co.uk/sitemap.xml",
+    #     "res loc dict": {
+    #         "Title": {"tag":["h1"], "attr":{"class":"content-header__row content-header__hed", "data-testid":"ContentHeaderHed"}, "keep":"all"},
+    #         "Subtitle": {"tag":["span"], "attr":{"data-test-id":"Article Subheadline", "class":"article__subheadline"}, "keep":"all"},
+    #         "Section": {"tag":["div"], "attr":{"class": "content-header__rubric rubric-vertical-align"}, "keep":"all"},
+    #         "Author": {"tag":["a"], "attr":{"class": "byline__name",}, "keep":0},
+    #         "Description": {"tag":["div"], "attr":{"class":"content-header__row content-header__dek"}, "keep":"all"},
+    #         "Location": {"tag":["p"], "attr":{"class":"article__dateline-location"}, "keep":"all"},
+    #         "Date": {"tag":["time"], "attr":{"class":"content-header__publish-date"}, "keep":"all"},
+    #         "Article": {"tag":["div"], "attr":{"class":"article__body"}, "keep":"all"}
+    #         }
         
-        },
+    #     },
 
     "Vogue_UK":{
         "site name": "Vogue_UK",
         "start page": "https://www.vogue.co.uk/",
-        "storage path": "D:/Data/Web Scraper/VogueUK",
+        "storage path": "C:/Data/Web Scraper/VogueUK",
         "site map addr": "https://www.vogue.co.uk/sitemap.xml",
         "res loc dict": {
             "Title": {"tag":["h1"], "attr":{"class":"split-screen-content-header__hed"}, "keep":"all"},
@@ -82,7 +82,7 @@ site_res_access_dict = {
     "National_Geographic":{
         "site name": "National_Geographic",
         "start page": "https://www.nationalgeographic.co.uk/",
-        "storage path": "D:/Data/Web Scraper/national_geographic",
+        "storage path": "C:/Data/Web Scraper/national_geographic",
         "site map addr": "https://www.nationalgeographic.co.uk/sitemap/sitemap.xml",
         "res loc dict": {
             "Title": {"tag":["h1"], "attr":{"class":"css-1sgbwt8"}, "keep":"all"},
@@ -100,7 +100,7 @@ site_res_access_dict = {
     "Rolling_Stone":{
         "site name": "Rolling_Stone",
         "start page": "https://www.rollingstone.com/",
-        "storage path": "D:/Data/Web Scraper/Rolling_Stone",
+        "storage path": "C:/Data/Web Scraper/Rolling_Stone",
         "site map addr": "https://www.nationalgeographic.co.uk/sitemap/sitemap.xml",
         "res loc dict": {
             "Title": {"tag":["h1"], "attr":{"class":"article-header__row"}, "keep":"all"},
@@ -118,7 +118,7 @@ site_res_access_dict = {
     "New_Statesman":{
         "site name": "New_Statesman",
         "start page": "https://www.newstatesman.com/",
-        "storage path": "D:/Data/Web Scraper/New_Statesman",
+        "storage path": "C:/Data/Web Scraper/New_Statesman",
         "site map addr": "https://www.nationalgeographic.co.uk/sitemap/sitemap.xml",
         "res loc dict": {
             "Title": {"tag":["h1"], "attr":{"class":"title"}, "keep":"all"},
@@ -136,7 +136,7 @@ site_res_access_dict = {
     "The_Week":{
         "site name": "The_Week",
         "start page": "https://www.theweek.co.uk/",
-        "storage path": "D:/Data/Web Scraper/The_Week",
+        "storage path": "C:/Data/Web Scraper/The_Week",
         "site map addr": "https://www.theweek.co.uk/sitemap.xml",
         "res loc dict": {
             "Title": {"tag":["h1"], "attr":{"class":"content-title"}, "keep":"all"},
@@ -154,7 +154,7 @@ site_res_access_dict = {
     "The_Atlantic":{
         "site name": "The_Atlantic",
         "start page": "https://www.theatlantic.com/",
-        "storage path": "D:/Data/Web Scraper/The_Atlantic",
+        "storage path": "C:/Data/Web Scraper/The_Atlantic",
         "site map addr": "https://www.theatlantic.com/sitemaps/sitemap.xml",
         "res loc dict": {
             "Title": {"tag":["h1"], "attr":{"class":"ArticleTitle"}, "keep":"all"},

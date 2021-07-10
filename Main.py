@@ -21,15 +21,16 @@ if __name__ == '__main__':
                     DEBUG = True)
     
     # Get all article urls from the sitemap
-    s.site_map_traversal(current_site_dict["site map addr"])
+    # s.site_map_traversal(current_site_dict["site map addr"])
     
     # Extract one page
     # s.struc_html_data_extract("https://www.theatlantic.com/science/archive/2021/07/space-billionaires-jeff-bezos-richard-branson/619383/")
     
     # While there are links that haven't been looked at, keep downloading
-    # while(len(s.urls_to_visit_dict) > 0 or (s.last_visited_page == None)):
-    #     s.site_traversal(3000)
-    #     s.new_output_JSON_for_Articles()
+    
+    while(len(s.urls_to_visit_dict) > 0 or (s.last_visited_page == None)):
+        s.site_traversal(3000)
+        s.new_output_JSON_for_Articles()
     
     
     
@@ -39,27 +40,16 @@ if __name__ == '__main__':
     
     # Create a GUI interface in tkinter
     
-    # Rewrite the functions to be more flexible and work outside the economist site:
-
-        # www.economist.com                 -- DONE
-        # www.wired.co.uk                   -- DONE
-        # www.spectator.co.uk               -- DONE
-        # www.vogue.co.uk                   -- DONE
-        # www.nationalgeographic.co.uk      -- DONE
-        # www.rollingstone.com              -- DONE
-        # www.newstatesman.com              -- DONE
-        # www.theweek.co.uk                 -- DONE
-        # www.theatlantic.com               -- DONE
-
-    # For each site:
-        # Make a locator dict
-        # Check the site map fn works
+    # Allow simultaneous downloads within the same process
     
-    # only save file when a new article is found so if the connection gets interupted
+    # Automate the creation of parts of the site_res_access_dict:
+        # "site name"
+        # "storage path"
     
-    # Change the program logic to end or pause if the internet is disconnected and try again
-    # in a number of minutes/quit
+    # Create a robots.txt parsing file to get the site map addresses and get restricted paths and stop them being accessed
     
-    # Adjust the displayed access time to be an average of the last 100 accesses
-    # and thus use that for the finish datetime.
+    # Add random time to the page access delay (uniform between 0-1 sec)
+    
+    # 
+ 
     

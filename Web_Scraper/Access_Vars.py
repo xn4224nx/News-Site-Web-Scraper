@@ -79,23 +79,23 @@ site_res_access_dict = {
         }, 
     
 
-    "National_Geographic":{
-        "site name": "National_Geographic",
-        "start page": "https://www.nationalgeographic.co.uk/",
-        "storage path": "C:/Data/Web Scraper/national_geographic",
-        "site map addr": "https://www.nationalgeographic.co.uk/sitemap/sitemap.xml",
-        "res loc dict": {
-            "Title": {"tag":["h1"], "attr":{"class":"css-1sgbwt8"}, "keep":"all"},
-            "Subtitle": {"tag":["h2"], "attr":{"class":"css-ju6on1"}, "keep":"all"},
-            "Section": {"tag":["div"], "attr":{"class": "css-gdhqwr"}, "keep":"all"},
-            "Author": {"tag":["div"], "attr":{"class": "css-674bmm",}, "keep":0},
-            "Description": {"tag":["div"], "attr":{"class":"ngart-img__cont__copy"}, "keep":0},
-            "Location": {"tag":["p"], "attr":{"class":"article__dateline-location"}, "keep":"all"},
-            "Date": {"tag":["span"], "attr":{"class":"css-1enp996"}, "keep":"all"},
-            "Article": {"tag":["div"], "attr":{"class":"paragraph css-0"}, "keep":"all"}
-            }
+    # "National_Geographic":{
+        # "site name": "National_Geographic",
+        # "start page": "https://www.nationalgeographic.co.uk/",
+        # "storage path": "C:/Data/Web Scraper/national_geographic",
+        # "site map addr": "https://www.nationalgeographic.co.uk/sitemap/sitemap.xml",
+        # "res loc dict": {
+            # "Title": {"tag":["h1"], "attr":{"class":"css-1sgbwt8"}, "keep":"all"},
+            # "Subtitle": {"tag":["h2"], "attr":{"class":"css-ju6on1"}, "keep":"all"},
+            # "Section": {"tag":["div"], "attr":{"class": "css-gdhqwr"}, "keep":"all"},
+            # "Author": {"tag":["div"], "attr":{"class": "css-674bmm",}, "keep":0},
+            # "Description": {"tag":["div"], "attr":{"class":"ngart-img__cont__copy"}, "keep":0},
+            # "Location": {"tag":["p"], "attr":{"class":"article__dateline-location"}, "keep":"all"},
+            # "Date": {"tag":["span"], "attr":{"class":"css-1enp996"}, "keep":"all"},
+            # "Article": {"tag":["div"], "attr":{"class":"paragraph css-0"}, "keep":"all"}
+            # }
         
-        },  
+        # },  
     
     "Rolling_Stone":{
         "site name": "Rolling_Stone",

@@ -11,7 +11,7 @@ import Web_Scraper.Access_Vars as var
  
 if __name__ == '__main__':
     
-    current_site_dict = var.site_res_access_dict["Rolling_Stone"] 
+    current_site_dict = var.site_res_access_dict["Vogue_UK"] 
     
     # Setup the class instance
     s = webscraper.news_web_scraper(data_storage_path = current_site_dict["storage path"],
@@ -21,7 +21,7 @@ if __name__ == '__main__':
                     DEBUG = False)
     
     # Get all article urls from the sitemap
-    s.site_map_traversal(current_site_dict["site map addr"])
+    # s.site_map_traversal(current_site_dict["site map addr"])
     
     # Extract one page
     # s.struc_html_data_extract("https://www.theatlantic.com/science/archive/2021/07/space-billionaires-jeff-bezos-richard-branson/619383/")

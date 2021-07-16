@@ -7,11 +7,11 @@ Created on Sun Jun 13 01:56:01 2021
 
 import Web_Scraper.Web_Scraper_Class as webscraper
 import Web_Scraper.Access_Vars as var
-
+import tkinter as tk
  
 if __name__ == '__main__':
     
-    current_site_dict = var.site_res_access_dict["Vogue_UK"] 
+    current_site_dict = var.site_res_access_dict["The_Atlantic"] 
     
     # Setup the class instance
     s = webscraper.news_web_scraper(data_storage_path = current_site_dict["storage path"],
@@ -31,12 +31,7 @@ if __name__ == '__main__':
     while(len(s.urls_to_visit_dict) > 0 or (s.last_visited_page == None)):
         s.site_traversal(3000)
         s.new_output_JSON_for_Articles()
-    
-    
-    
-    
-    
-### TODO:
+
     
     # Create a GUI interface in tkinter
     
@@ -47,8 +42,6 @@ if __name__ == '__main__':
         # "storage path"
     
     # Create a robots.txt parsing file to get the site map addresses and get restricted paths and stop them being accessed
-    
-    # Add random time to the page access delay (uniform between 0-1 sec)
     
     # All on the above!!!
  

@@ -7,7 +7,7 @@ Created on Sun Jun 13 01:56:01 2021
 
 import Web_Scraper.Web_Scraper_Class as webscraper
 import Web_Scraper.Access_Vars as var
-import tkinter as tk
+import Scrap_Aux_Functions as aux
  
 if __name__ == '__main__':
     
@@ -28,12 +28,11 @@ if __name__ == '__main__':
     
     # While there are links that haven't been looked at, keep downloading
     
-    while(len(s.urls_to_visit_dict) > 0 or (s.last_visited_page == None)):
+    while((len(s.urls_to_visit_dict) > 0 or (s.last_visited_page == None)) and aux.is_connected_to_internet()):
         s.site_traversal(3000)
         s.new_output_JSON_for_Articles()
 
-    
-    # Create a GUI interface in tkinter
+    # Add a command line interface to set the site to access from additional parameters
     
     # Allow simultaneous downloads within the same process
     
@@ -42,7 +41,6 @@ if __name__ == '__main__':
         # "storage path"
     
     # Create a robots.txt parsing file to get the site map addresses and get restricted paths and stop them being accessed
-    
-    # All on the above!!!
+
  
     
